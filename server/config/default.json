@@ -1,0 +1,16 @@
+{
+  "port": 36084,
+  "database": {
+    "user": "IDEA",
+    "password": "123456Aa!",
+    "database": "ldt_2023",
+    "host": "localhost",
+    "port": "3306"
+  },
+  "telegram": {
+    "token": "6247421606:AAEx6lzHiJC-0Gc9IUj0FOLUlxC_2Gsfs5E",
+    "pooling": true,
+    "link": "https://t.me/ldt2023_bot"
+  },
+  "jwt": "5678rfjgmjryunk87r"
+}
