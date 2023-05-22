@@ -10,7 +10,11 @@ function genGuid(length) {
     return result;
 }
 
-const getUserId = (token) => +jwt.verify(token, config.get('jwt'), { algorithms: ["HS256"] }).id;
+function getUserId(token) {
+    const id = jwt.verify(token, config.get('jwt'), { algorithms: ["HS256"] }).id;
+    return +id || id;
+}
+
 const genTokens = (userId) => ({
     access: jwt.sign({ id: userId }, config.get('jwt'), { expiresIn: '14d', algorithm: "HS256" }),
     refresh: genGuid(60),
@@ -26,8 +30,8 @@ function userMiddleware(req, res, next) {
 
         if (!userId)
             return res.status(401).end();
-
         req.userId = userId;
+        req.anonymous = typeof userId === 'string';
         next();
     } catch (e) {
         if (e instanceof jwt.TokenExpiredError)

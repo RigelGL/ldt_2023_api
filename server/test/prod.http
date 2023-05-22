@@ -1,0 +1,16 @@
+### login
+POST https://api-ldt23.rigellab.ru/auth/login/email
+Content-Type: application/json
+
+{
+  "email": "user@test.test",
+  "password": "12345678"
+}
+
+###
+GET https://api-ldt23.rigellab.ru/user/me
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjg0Njg2NTY5LCJleHAiOjE2ODU4OTYxNjl9.cGEkDwt1Tp8k2vbUQJCV5cxIsqiIaBztuAhYXhj1zTY
+
+### filters
+GET https://api-ldt23.rigellab.ru/course/filters
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjg0Njg2NTY5LCJleHAiOjE2ODU4OTYxNjl9.cGEkDwt1Tp8k2vbUQJCV5cxIsqiIaBztuAhYXhj1zTY

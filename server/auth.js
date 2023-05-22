@@ -5,6 +5,15 @@ const { genGuid, genTokens } = require('./utils');
 const userDao = require('./dao/UserDao');
 
 function get(app, redisClient) {
+    app.post('/login/anonymous', async (req, res) => {
+        try {
+            const { access, refresh } = genTokens(genGuid(60));
+            res.status(200).json({ access: access, refresh: refresh }).end();
+        } catch (error) {
+            res.status(500).json({ error: 500 }).end();
+        }
+    });
+
     app.post('/login/email', async (req, res) => {
         try {
             let email = (req.body.email || '').trim();
@@ -14,21 +23,21 @@ function get(app, redisClient) {
             if (!password || !email)
                 return res.status(400).json({ error: 3 }).end();
 
-            const user = await userDao.findUserByEmail(email);
+            const partUser = await userDao.findIdAndPasswordByEmail(email);
 
-            if (user === null)
+            if (partUser === null)
                 return res.status(404).end();
 
-            if (!await bcrypt.compare(password, user.password))
-                return res.status(403).end();
+            if (!await bcrypt.compare(password, partUser.password))
+                return res.status(409).end();
 
             if (fcm)
-                await userDao.addFcmToken(user.id, fcm);
+                await userDao.addFcmToken(partUser.id, fcm);
 
-            const { access, refresh } = genTokens(user.id);
-            await userDao.addRefreshToken(user.id, refresh);
+            const { access, refresh } = genTokens(partUser.id);
+            await userDao.addRefreshToken(partUser.id, refresh);
 
-            res.status(200).json({ access: access, refresh: refresh, user: user.toSafeJson() }).end();
+            res.status(200).json({ access: access, refresh: refresh }).end();
         } catch (error) {
             res.status(500).json({ error: 500 }).end();
         }

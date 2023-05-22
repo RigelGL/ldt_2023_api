@@ -1,0 +1,51 @@
+### me
+GET localhost:36084/user/me
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjg0NTg4NTA2LCJleHAiOjE2ODQ2NzQ5MDZ9.CGTJ37zdW1naGroeyz6LI8_V2O-qXFA4RmSbT0pYVyk
+
+### login
+POST localhost:36084/auth/login/email
+Content-Type: application/json
+
+{
+  "email": "user@test.test",
+  "password": "12345678"
+}
+
+### login
+POST localhost:36084/auth/login/anonymous
+
+
+### email step 1
+POST localhost:36084/auth/signup/emailFirst
+Content-Type: application/json
+
+{
+  "email": "user@test.test"
+}
+
+### email step 2
+POST localhost:36084/auth/signup/emailSecond
+Content-Type: application/json
+
+{
+  "name": "User Test",
+  "email": "user@test.test",
+  "password": "12345678",
+  "code": "50922"
+}
+
+
+
+### filters
+GET localhost:36084/course/filters
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjg0Njg2MzU3LCJleHAiOjE2ODU4OTU5NTd9.Kt0l7FxYx-y4v4-legksd7QGvoUhW8WhLy6tEqCX_Hs
+
+### filters
+POST localhost:36084/course/search
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjg0Njg2MzU3LCJleHAiOjE2ODU4OTU5NTd9.Kt0l7FxYx-y4v4-legksd7QGvoUhW8WhLy6tEqCX_Hs
+Content-Type: application/json
+
+{
+  
+}
+

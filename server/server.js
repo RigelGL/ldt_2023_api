@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
 
 require('./user')(app);
 require('./auth')(app, redisClient);
+require('./course')(app);
 
 app.use(async (req, res) => res.status(404).end());
 

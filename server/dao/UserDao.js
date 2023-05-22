@@ -59,24 +59,13 @@ class UserDao {
         return new User(res);
     }
 
-    async findUserByEmail(email) {
-        const res = (await pool.query(
-            `SELECT id,
-                    name,
-                    email,
-                    password,
-                    telegram_id,
-                    telegram_chat_id,
-                    vk_id,
-                    invite_link
-             FROM user
-             WHERE email = ?`,
-            [email]))[0][0];
+    async findIdAndPasswordByEmail(email) {
+        const res = (await pool.query('SELECT id, password FROM user WHERE email = ?', [email]))[0][0];
 
         if (!res)
             return null;
 
-        return new User(res);
+        return { id: res.id, password: res.password };
     }
 
     async createUserFromEmail(name, email, password, attraction = null) {
