@@ -12,5 +12,10 @@ GET https://api-ldt23.rigellab.ru/user/me
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjg0Njg2NTY5LCJleHAiOjE2ODU4OTYxNjl9.cGEkDwt1Tp8k2vbUQJCV5cxIsqiIaBztuAhYXhj1zTY
 
 ### filters
-GET https://api-ldt23.rigellab.ru/course/filters
+POST https://api-ldt23.rigellab.ru/course/search
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjg0Njg2NTY5LCJleHAiOjE2ODU4OTYxNjl9.cGEkDwt1Tp8k2vbUQJCV5cxIsqiIaBztuAhYXhj1zTY
+
+### get course
+GET https://api-ldt23.rigellab.ru/course/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjg0Njg2MzU3LCJleHAiOjE2ODU4OTU5NTd9.Kt0l7FxYx-y4v4-legksd7QGvoUhW8WhLy6tEqCX_Hs
+Content-Type: application/json

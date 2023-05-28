@@ -30,7 +30,21 @@ function get(app) {
             if (!id)
                 return res.status(400).end();
 
-            res.status(200).json({ name: 'test', id: 0 }).end();
+            res.status(200).json(await courseDao.getCourse(id)).end();
+        } catch (e) {
+            console.log(e);
+            res.status(500).end();
+        }
+    });
+
+    app.get('/:id(\\d+)/lessons', async (req, res) => {
+        try {
+            const id = req.params.id;
+
+            if (!id)
+                return res.status(400).end();
+
+            res.status(200).json(await courseDao.getCourseLessons(id)).end();
         } catch (e) {
             console.log(e);
             res.status(500).end();

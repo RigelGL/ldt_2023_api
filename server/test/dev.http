@@ -45,7 +45,9 @@ POST localhost:36084/course/search
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjg0Njg2MzU3LCJleHAiOjE2ODU4OTU5NTd9.Kt0l7FxYx-y4v4-legksd7QGvoUhW8WhLy6tEqCX_Hs
 Content-Type: application/json
 
-{
-  
-}
+{}
 
+### get course
+GET localhost:36084/course/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjg0Njg2MzU3LCJleHAiOjE2ODU4OTU5NTd9.Kt0l7FxYx-y4v4-legksd7QGvoUhW8WhLy6tEqCX_Hs
+Content-Type: application/json
